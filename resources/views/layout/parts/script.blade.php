@@ -1,0 +1,9 @@
+<script type="text/javascript" src="{{ asset('asset') }}/plugins/contact-form-7/includes/swv/js/index3960.js?ver=5.7.5.1" id="swv-js"></script>
+<script type="text/javascript" src="{{ asset('asset') }}/plugins/contact-form-7/includes/js/index3960.js?ver=5.7.5.1" id="contact-form-7-js"></script>
+<script type="text/javascript" src="{{ asset('asset') }}/js/jquery.js?ver=1" id="jq-lib-js"></script>
+<script type="text/javascript" src="{{ asset('asset') }}/js/popper.min.js?ver=1" id="popper-js"></script>
+<script type="text/javascript" src="{{ asset('asset') }}/js/bootstrap.min.js?ver=1" id="bootstrap-js"></script>
+<script type="text/javascript" src="{{ asset('asset') }}/js/owl.carousel.min.js?ver=1" id="owl-js"></script>
+<script type="text/javascript" src="{{ asset('asset') }}/js/jquery.fancybox.js?ver=1" id="fancybox-js"></script>
+<script type="text/javascript" src="{{ asset('asset') }}/js/scrollreveal.min.js?ver=1" id="scrollreveal-js"></script>
+<script type="text/javascript" src="{{ asset('asset') }}/js/plugin.js?ver=1" id="plugin-js"></script>
