@@ -23,7 +23,7 @@ class UpdateNewsRequest extends FormRequest
     {
         return [
             'title'=>'required',
-            'image'=>'required|image',
+            'image'=>'image',
             'content'=>'required',
         ];
     }

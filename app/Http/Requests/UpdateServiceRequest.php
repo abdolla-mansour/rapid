@@ -24,7 +24,7 @@ class UpdateServiceRequest extends FormRequest
         return [
             'name'=>'required',
             'content'=>'required',
-            'image'=>'required|image',
+            'image'=>'image',
         ];
     }
 }

@@ -72,6 +72,7 @@ class ServiceController extends Controller
             $service->name = $request->name;
             $service->content = $request->content;
             if($request->hasFile('image')){
+                Storage::disk('public')->delete($service->image);
                 $service->image = $request->image->store('services', 'public');
             }
             $service->save();
@@ -94,6 +95,7 @@ class ServiceController extends Controller
             return redirect()->back();
         }
         if($service->image){
+            Storage::disk('public')->delete($service->image);
             Storage::delete($service->image);
         }
         $service->delete();

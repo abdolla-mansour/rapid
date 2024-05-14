@@ -23,12 +23,12 @@ class UpdateProjectRequest extends FormRequest
     {
         return [
             'name'=>'required',
-            'image'=>'required|file',
+            'image'=>'image',
             'description'=>'required',
             'budaget'=>'required|numeric|min:0',
             'client'=>'required',
-            'photos'=>'required|array',
-            'photos.*'=>'required|image'
+            'photos'=>'array',
+            'photos.*'=>'image'
         ];
     }
 }

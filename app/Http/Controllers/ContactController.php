@@ -31,10 +31,11 @@ class ContactController extends Controller
             toastr()->success('تم ارسال الرسالة بنجاح');
             return redirect()->back();
         }catch(Exception $e){
-            toastr()->error('تم ارسال الرسالة بنجاح');
+            toastr()->error('حدث خطأ يرجي المحاوله مره اخري لاحقا');
             return redirect()->back();
         }
     }
+
     /**
      * Remove the specified resource from storage.
      */

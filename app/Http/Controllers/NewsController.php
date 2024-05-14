@@ -32,7 +32,7 @@ class NewsController extends Controller
             toastr()->success('تم الحفظ بنجاح');
             return redirect()->back();
         }catch(Exception $e){
-            toastr()->error('تم الحفظ بنجاح');
+            toastr()->error('خظا في التخزين');
             return redirect()->back();
         }
     }
@@ -69,7 +69,7 @@ class NewsController extends Controller
             toastr()->success('تم التعديل بنجاح');
             return redirect()->back();
         }catch(Exception $e){
-            toastr()->error('تم التعديل بنجاح');
+            toastr()->error('خظا في التخزين');
             return redirect()->back();
         }
     }

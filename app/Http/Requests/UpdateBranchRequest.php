@@ -22,7 +22,6 @@ class UpdateBranchRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'id'=>'required|exists:branches,id',
             'name'=>'required',
             'map_link' => 'required|url',
             'address'=>'required',
