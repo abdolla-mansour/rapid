@@ -12,7 +12,7 @@ use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\ServiceController;
-
+use App\Http\Controllers\SettingController;
 
 Route::controller(HomeController::class)->group(function(){
     Route::get('/','index')->name('home');
@@ -74,6 +74,26 @@ Route::controller(ServiceController::class)->prefix('admin/service')->name('admi
     Route::post('store/', 'store')->name('service.store');
     Route::put('/update/{service}', 'update')->name('service.update');
     Route::get('/delete/{service}', 'destroy')->name('service.destroy');
+});
+
+Route::controller(SettingController::class)->prefix('admin/setting')->name('admin.')->middleware('auth')->group(function(){
+    Route::get('/','index')->name('setting');
+
+    // update another setting
+    Route::put('update/', 'another_update')->name('setting.update');
+
+    // update about setting
+    Route::put('update/about', 'about_update')->name('about.setting.update');
+
+    // update rate setting
+    Route::post('update/rate/', 'rate_create')->name('rate.setting.create');
+    Route::put('update/rate/{id}', 'rate_update')->name('rate.setting.update');
+    Route::delete('update/rate/delete/{id}', 'rate_delete')->name('rate.setting.delete');
+
+    // update home setting
+    Route::post('update/home/', 'home_create')->name('home.setting.create');
+    Route::put('update/home/{id}', 'home_update')->name('home.setting.update');
+    Route::delete('update/home/delete/{id}', 'home_delete')->name('home.setting.delete');
 });
 
 Route::controller(ContactController::class)->prefix('admin/contact')->name('admin.')->middleware('auth')->group(function(){

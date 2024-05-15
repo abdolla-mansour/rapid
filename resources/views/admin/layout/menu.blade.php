@@ -80,5 +80,12 @@
           <div>الرسائل</div>
         </a>
       </li>
+
+      <li class="menu-item">
+        <a href="{{ route('admin.setting') }}" class="menu-link">
+          <i class="menu-icon tf-icons ti ti-news"></i>
+          <div>الإعدادات</div>
+        </a>
+      </li>
     </ul>
   </aside>

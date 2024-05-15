@@ -7,14 +7,14 @@
                 من نحن </h3>
             <div class="about-info">
                 <div class="about-cont">
-                    <p><strong>تمتلك شركة سريع العربية خبرات طويلة في بناء المشاريع و قد حثثت نجاحا مطلقا منذ تاسيسها عام 2019 في تقديم خدمة متميزة للعملاء حيث تمتاز بدقة تنفيذ عالي الجودة فقد وضعنا الجودة هي المعيار الاساسي في تنفيذ المشاريع و هو مصدم لدينا عن المعيار الربحي و بالتالي نعمل علي مبدا ثابت وهو ان العميل اولا. </strong></p>
+                    <p><strong>{{ $about->how_ar_we }}</strong></p>
                 </div>
             </div>
-            <div class="row" >
+            <div class="row">
                 <div class="col-lg-6" style="margin-top: 100px">
                     <div class="experience" style="">
-                        <div class="experience-num" >+{{ date('Y') - 2019 }}</div>
-                        <div class="experience-tit" >سنوات الخبرة</div>
+                        <div class="experience-num">+{{ date('Y') - 2019 }}</div>
+                        <div class="experience-tit">سنوات الخبرة</div>
                     </div>
                 </div>
                 <div class="col-lg-6">
@@ -23,7 +23,7 @@
                             <h1 class="sppb-addon-title">الرؤية</h1>
                             <div class="sppb-addon-content">
                                 <div class="sppb-addon-text">
-                                    <div dir="rtl">ان طموح الريادة و شغف التميز يجعلنا في سعي دائم لان نكون الافضل في حجم و نوعية استثمارتنا ، متسلحين بالتطوير الدائم لادئنا بما يواكب طموحتنا و تنويع منتجاتنا بما يتماشي مع رغبات عملائنا ليدفعنا في النهاية نحو تقوية قدراتنا التنافسية في جميع الانشطة التي نعمل بها لنكون واحدة من اولي شركات المقاولات و البناء في المملكة العربية السعودية يجب ان ينظر الينا الشركاء و العملاء كجزء لا يتجزا من عملية نجاحه.</div>
+                                    <div dir="rtl">{{ $about->vision }}</div>
                                 </div>
                             </div>
                         </div>
@@ -37,6 +37,18 @@
         <div class="container">
             <h3 class="page-sub-tit text-center">قيمنا</h3>
             <div class="row">
+                @foreach ($rate as $r)
+                    <div class="col-lg-4 col-md-6">
+                        <div class="value-item">
+                            {{ $r->rate }}
+                        </div>
+                    </div>
+                @endforeach
+                {{-- <div class="col-lg-4 col-md-6">
+                    <div class="value-item">
+                        Emphasizing that we are strategic partners with our customers in order to achieve the highest levels
+                        of cooperation with them. </div>
+                </div>
                 <div class="col-lg-4 col-md-6">
                     <div class="value-item">
                         Emphasizing that we are strategic partners with our customers in order to achieve the highest levels
@@ -51,7 +63,7 @@
                     <div class="value-item">
                         Constant pursuit of development to keep pace with everything new in the fields of our workers.
                     </div>
-                </div>
+                </div> --}}
 
             </div>
         </div>
@@ -62,15 +74,16 @@
             <h2>عملائنا</h2>
             <section class="d-flex" style="justify-content: center">
                 @foreach ($clients as $client)
-                <div class="" style="text-align: center; margin: 10px; ">
-                    <img style=" border-radius: 50%;
+                    <div class="" style="text-align: center; margin: 10px; ">
+                        <img style=" border-radius: 50%;
                     width: 100px;
                     height: 100px;
                     display:block;
   margin: 0 auto;
-                    " src="{{ url('storage').'/'.$client->photo }}">
-                    <span style="display: inline-block;">{{$client->name}}</span>
-                </div>
+                    "
+                            src="{{ url('storage') . '/' . $client->photo }}">
+                        <span style="display: inline-block;">{{ $client->name }}</span>
+                    </div>
                 @endforeach
             </section>
         </div>

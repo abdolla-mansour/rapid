@@ -4,21 +4,31 @@
 
         <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
             <ol class="carousel-indicators">
-              <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-              <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-              <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-              <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
-              <li data-target="#carouselExampleIndicators" data-slide-to="4"></li>
-              <li data-target="#carouselExampleIndicators" data-slide-to="5"></li>
+              <li data-target="#carouselExampleIndicators" data-slide-to="{{ $first_image->id }}" class="active"></li>              
+              @foreach ($home as $image)
+                <li data-target="#carouselExampleIndicators" data-slide-to="{{ $image->id }}"></li>
+              @endforeach
             </ol>
+
             <div class="carousel-inner">
               <div class="carousel-item active">
-                <img src="{{ asset('sliders/building.avif') }}" style="min-width: 100%" alt="...">
+                <img src="{{ asset('storage/' . $first_image->home_image) }}" style="min-width: 100%" alt="...">
                 <div class="carousel-caption d-none d-md-block">
-                  <h5>خدمات البناء والتشطيب </h5>
+                  <h5>{{ $first_image->image_name }}</h5>
                 </div>
               </div>
+              @foreach ($home as $image)
+
               <div class="carousel-item">
+                <img src="{{ asset('storage/' . $image->home_image) }}" style="min-width: 100%" alt="...">
+                <div class="carousel-caption d-none d-md-block">
+                  <h5>{{ $image->image_name }}</h5>
+                </div>
+              </div>
+                  
+              
+              @endforeach
+              {{-- <div class="carousel-item">
                 <img src="{{ asset('sliders/road.jpg') }}" style="min-width: 100%" alt="...">
                 <div class="carousel-caption d-none d-md-block">
                   <h5>خدمات اعمال الطرق</h5>
@@ -47,7 +57,7 @@
                 <div class="carousel-caption d-none d-md-block">
                   <h5>خدمات لوجستية</h5>
                 </div>
-              </div>
+              </div> --}}
             </div>
             <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
               <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -68,7 +78,7 @@
                 من نحن </h3>
                 <div class="about-info">
                   <div class="about-cont">
-                      <p><strong>تمتلك شركة سريع العربية خبرات طويلة في بناء المشاريع و قد حثثت نجاحا مطلقا منذ تاسيسها عام 2019 في تقديم خدمة متميزة للعملاء حيث تمتاز بدقة تنفيذ عالي الجودة فقد وضعنا الجودة هي المعيار الاساسي في تنفيذ المشاريع و هو مصدم لدينا عن المعيار الربحي و بالتالي نعمل علي مبدا ثابت وهو ان العميل اولا. </strong></p>
+                      <p><strong>{{ $about->how_ar_we }}</strong></p>
                   </div>
               </div>
             <div class="row">
@@ -84,7 +94,7 @@
                             <h1 class="sppb-addon-title">الرؤية</h1>
                             <div class="sppb-addon-content">
                                 <div class="sppb-addon-text">
-                                    <div dir="rtl">ان طموح الريادة و شغف التميز يجعلنا في سعي دائم لان نكون الافضل في حجم و نوعية استثمارتنا ، متسلحين بالتطوير الدائم لادئنا بما يواكب طموحتنا و تنويع منتجاتنا بما يتماشي مع رغبات عملائنا ليدفعنا في النهاية نحو تقوية قدراتنا التنافسية في جميع الانشطة التي نعمل بها لنكون واحدة من اولي شركات المقاولات و البناء في المملكة العربية السعودية يجب ان ينظر الينا الشركاء و العملاء كجزء لا يتجزا من عملية نجاحه.</div>
+                                    <div dir="rtl">{{ $about->vision }}</div>
                                 </div>
                             </div>
                         </div>
