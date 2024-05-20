@@ -32,7 +32,7 @@ class HomeController extends Controller
     }
     function about(){
         $services = Service::all();
-        $clients = Client::orderBy('id', 'desc')->take(7)->get();
+        $clients = Client::all();
 
         $services = Service::all();
         $setting = Setting::first();
