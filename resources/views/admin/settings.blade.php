@@ -168,6 +168,7 @@
                             <th>whatsapp</th>
                             <th>email</th>
                             <th>phone</th>
+                            <th>head office</th>
                             <th>اجراء</th>
                         </tr>
                     </thead>
@@ -182,6 +183,7 @@
                             <td> {{ $setting->whatsapp }} </td>
                             <td> {{ $setting->email }} </td>
                             <td> {{ $setting->phone }} </td>
+                            <td> {{ $setting->head_office }} </td>
                             <td>
                                 <button class="col-2 btn btn-primary" data-bs-toggle="modal" data-bs-target="#another_modal">تعديل</button>
                             </td>
@@ -338,6 +340,10 @@
                         <div class="form-group">
                             <label for="phone" class="col-form-label">phone:</label>
                             <input type="text" value="{{ $setting->phone }}" name="phone" class="form-control" id="phone">
+                        </div>
+                        <div class="form-group">
+                            <label for="head_office" class="col-form-label">head_office:</label>
+                            <input type="text" value="{{ $setting->head_office }}" name="head_office" class="form-control" id="head_office">
                         </div>
                     </div>
                     <div class="modal-footer">

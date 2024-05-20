@@ -7,6 +7,7 @@
     "require": {
         "php": "^8.2",
         "coreui/coreui": "5.0.0",
+        "intervention/image": "^3.6",
         "laravel/framework": "^11.0",
         "laravel/tinker": "^2.9",
         "yoeunes/toastr": "^2.3"

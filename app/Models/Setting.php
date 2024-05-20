@@ -19,6 +19,7 @@ class Setting extends Model
         'whatsapp',
         'email',
         'phone',
+        'head_office',
     ];
 
     public $timestamps = false;

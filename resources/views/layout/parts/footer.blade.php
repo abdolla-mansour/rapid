@@ -37,7 +37,7 @@
                             <h6 class="foot-contact-info-item-tit">
                                 المكتب الرئيسي </h6>
                             <div class="foot-contact-info-item-data">
-                                المملكة العربية السعودية - الرياض
+                                {{ $setting->head_office }}
                             </div>
                         </div>
                     </div>

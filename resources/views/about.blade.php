@@ -72,7 +72,7 @@
     <section class="clients">
         <div class="container">
             <h2>عملائنا</h2>
-            <section class="d-flex" style="justify-content: center">
+            <section class="d-flex" style="justify-content: center;flex-wrap: wrap">
                 @foreach ($clients as $client)
                     <div class="" style="text-align: center; margin: 10px; ">
                         <img style=" border-radius: 50%;

@@ -26,6 +26,7 @@ class SettingSeeder extends Seeder
             'whatsapp' => 'https://api.whatsapp.com/send/?phone=966112100490&text&type=phone_number&app_absent=0',
             'email' => 'info@rapidarabian.com',
             'phone' => '00966112100490',
+            'head_office' => 'المملكة العربية السعودية - الرياض',
         ]);
 
         HomeSetting::create([

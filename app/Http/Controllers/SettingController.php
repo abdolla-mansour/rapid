@@ -9,7 +9,9 @@ use App\Models\RateSetting;
 use App\Models\AboutSetting;
 use Illuminate\Http\Request;
 use Intervention\Image\Image;
+use Intervention\Image\ImageManager;
 use Illuminate\Support\Facades\Storage;
+use Intervention\Image\Drivers\Gd\Driver;
 
 class SettingController extends Controller
 {
@@ -31,12 +33,22 @@ class SettingController extends Controller
         ]);
 
         try {
-            $img = $request->home_image->store('settings', 'public');
+
+            // dd(storage_path('app/public/settings'));
+
+            $image_name = uniqid() . '.' . $request->file('home_image')->getClientOriginalExtension();
+            $manager = new ImageManager(new Driver());
+
+            $my_image = $manager->read($request->home_image)->cover(1349 , 450);
+
+            $my_image->save(storage_path('app/public/settings/' . $image_name));
+
+            // $img = $request->home_image->store('settings', 'public');
             // Image::make($img);
             // $img = $img->resize(1349, 450);
 
             HomeSetting::create([
-                'home_image' => $img,
+                'home_image' => 'settings/' . $image_name,
                 'image_name' => $request->image_name
             ]);
 
@@ -130,7 +142,8 @@ class SettingController extends Controller
             'tiktok' => 'required|string',
             'whatsapp' => 'required|string',
             'email' => 'required|email',
-            'phone' => 'required|string'
+            'phone' => 'required|string',
+            'head_office' => 'required|string',
         ]);
 
         try {
@@ -146,6 +159,7 @@ class SettingController extends Controller
             $another->whatsapp = $request->whatsapp;
             $another->email = $request->email;
             $another->phone = $request->phone;
+            $another->head_office = $request->head_office;
 
             $another->save();
 

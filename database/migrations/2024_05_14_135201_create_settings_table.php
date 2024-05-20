@@ -22,6 +22,7 @@ return new class extends Migration
             $table->string('whatsapp');
             $table->string('email');
             $table->string('phone');
+            $table->string('head_office');
         });
     }
 
