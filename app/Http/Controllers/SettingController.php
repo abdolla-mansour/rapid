@@ -7,6 +7,7 @@ use App\Models\Setting;
 use App\Models\HomeSetting;
 use App\Models\RateSetting;
 use App\Models\AboutSetting;
+use App\Models\CompanyProfile;
 use Illuminate\Http\Request;
 use Intervention\Image\Image;
 use Intervention\Image\ImageManager;
@@ -22,6 +23,7 @@ class SettingController extends Controller
             'about_setting' => AboutSetting::first(),
             'home_settings' => HomeSetting::all(),
             'rate_settings' => RateSetting::all(),
+            'company_profile' => CompanyProfile::first(),
         ]);
     }
 
@@ -39,7 +41,7 @@ class SettingController extends Controller
             $image_name = uniqid() . '.' . $request->file('home_image')->getClientOriginalExtension();
             $manager = new ImageManager(new Driver());
 
-            $my_image = $manager->read($request->home_image)->cover(1349 , 450);
+            $my_image = $manager->read($request->home_image)->cover(1349, 450);
 
             $my_image->save(storage_path('app/public/settings/' . $image_name));
 
@@ -215,6 +217,30 @@ class SettingController extends Controller
             return redirect()->back();
         } catch (Exception $e) {
             toastr()->error('حدث خطا ما');
+            return redirect()->back();
+        }
+    }
+
+    public function profile_update(Request $request)
+    {
+        $request->validate([
+            'profile_name' => ['required', 'file'],
+        ]);
+
+        try {
+            $company = CompanyProfile::first();
+            Storage::disk('my_disk')->delete($company->profile_name);
+            $name = uniqid() . '.' . $request->file('profile_name')->getClientOriginalExtension();
+            $request->file('profile_name')->move(public_path('storage/profile'), $name);
+
+            $company->profile_name = $name;
+            $company->save();
+
+            toastr()->success('تم الإضافه بنجاح');
+            return redirect()->back();
+        } catch (Exception $e) {
+            toastr()->error('حدث خطا ما');
+            return $e->getMessage();
             return redirect()->back();
         }
     }

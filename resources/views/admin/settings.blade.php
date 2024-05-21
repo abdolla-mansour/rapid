@@ -9,6 +9,8 @@
         </div>
         <div class="card-body">
             <div class="table-responsive">
+
+
                 <h2 class="d-inline-flex">إعدادات الصفحه الرئيسية</h2>
                 <button class="btn btn-primary d-inline-flex" data-bs-toggle="modal" data-bs-target="#modal_home_add_image">اضافه صوره</button>
                 <table class="table">
@@ -74,6 +76,8 @@
                     </tbody>
                 </table>
                 <br>
+
+
                 <h2>إعدادات صفحه من نحن</h2>
                 <table class="table">
                     <thead>
@@ -95,6 +99,8 @@
                     </tbody>
                 </table>
                 <br>
+
+
                 <h2 class="d-inline-flex">إعدادات قيمنا</h2>
                 <button class="btn btn-primary d-inline-flex" data-bs-toggle="modal" data-bs-target="#rate_modal">اضافه</button>
                 <table class="table">
@@ -154,6 +160,28 @@
                     </tbody>
                 </table>
                 <br>
+
+
+                <h2 class="d-inline-flex">الملف التعريفي للشركه</h2>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>الملف</th>
+                            <th>اجراء</th>
+                        </tr>
+                    </thead>
+                    <tbody class="table-border-bottom-0">
+                        <tr>
+                            <td> {{ $company_profile->profile_name }} </td>
+                            <td>
+                                <button class="col-2 btn btn-primary" data-bs-toggle="modal" data-bs-target="#profile_modal">تعديل</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <br>
+
+
                 <h2>باقي الإعدادات</h2>
                 <table class="table">
                     <thead>
@@ -279,6 +307,36 @@
                         <div class="form-group">
                             <label for="vision" class="col-form-label">الرؤية:</label>
                             <textarea name="vision" class="form-control" id="vision">{{ $about_setting->vision }}</textarea>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">الغاء</button>
+                        <button type="submit" class="btn btn-primary">حفظ</button>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- About Modal -->
+    <div class="modal fade" id="profile_modal" tabindex="-1" aria-labelledby="about_modal" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="">اضافة خدمة</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form method="POST" action="{{ route('admin.profile.setting.update') }}" enctype="multipart/form-data">
+                    @csrf
+                    @method('PUT')
+
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label for="file_id" class="col-form-label">الرؤية:</label>
+                            <input type="file" name="profile_name" class="form-control" id="file_id">
                         </div>
                     </div>
                     <div class="modal-footer">

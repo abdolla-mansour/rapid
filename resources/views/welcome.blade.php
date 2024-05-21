@@ -105,7 +105,7 @@
                         <a class="main-btn" href="{{ route('about') }}">
                             اقرأ المزيد </a>
 
-                        <a class="main-btn" href="">
+                        <a class="main-btn" href="{{ url('download/') }}">
                             <i class="fa-regular fa-file-pdf"></i>
                             الملف التعريفي لشركة </a>
                     </div>

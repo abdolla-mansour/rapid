@@ -1,18 +1,20 @@
 <?php
 
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\NewsController;
-use App\Http\Controllers\ClientController;
 use App\Http\Controllers\BranchController;
-use App\Http\Controllers\ChangePasswordController;
+use App\Http\Controllers\ClientController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\SettingController;
+use App\Http\Controllers\ChangePasswordController;
+use App\Models\CompanyProfile;
 
 Route::controller(HomeController::class)->group(function(){
     Route::get('/','index')->name('home');
@@ -27,6 +29,27 @@ Route::controller(HomeController::class)->group(function(){
     Route::get('contactus','contactus')->name('contactus');
     Route::get('service/{id}','service_show')->name('service.show');
 });
+
+// Download Route
+Route::get('download/', function()
+{
+    $filename = CompanyProfile::first()->profile_name;
+    // Check if file exists in app/storage/file folder
+    $file_path = public_path('storage/profile/' . $filename);
+    // dd($file_path);
+    if (file_exists($file_path))
+    {
+        return response()->download($file_path);
+    }
+    else
+    {
+        // Error
+        exit('Requested file does not exist on our server!');
+    }
+});
+
+
+
 Route::get('/dashboard', function () {
     return redirect()->route('news');
 })->middleware(['auth', 'verified'])->name('dashboard');
@@ -94,6 +117,9 @@ Route::controller(SettingController::class)->prefix('admin/setting')->name('admi
     Route::post('update/home/', 'home_create')->name('home.setting.create');
     Route::put('update/home/{id}', 'home_update')->name('home.setting.update');
     Route::delete('update/home/delete/{id}', 'home_delete')->name('home.setting.delete');
+
+    // update profile setting
+    Route::put('update/profile', 'profile_update')->name('profile.setting.update');
 });
 
 Route::controller(ContactController::class)->prefix('admin/contact')->name('admin.')->middleware('auth')->group(function(){

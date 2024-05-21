@@ -11,26 +11,31 @@ use App\Models\Setting;
 use App\Models\HomeSetting;
 use App\Models\RateSetting;
 use App\Models\AboutSetting;
+use App\Models\CompanyProfile;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
-    function index(){
+    function index()
+    {
         $services = Service::all();
         $setting = Setting::first();
         $about = AboutSetting::first();
         $first_image = HomeSetting::first();
+        $profile = CompanyProfile::first()->profile_name;
         $home = HomeSetting::orderBy('id', 'asc')->get()->skip(1);
         return view('welcome', [
             'services' => $services,
             'setting' => $setting,
             'about' => $about,
             'first_image' => $first_image,
-            'home' => $home
+            'home' => $home,
+            'profile' => $profile,
         ]);
     }
-    function about(){
+    function about()
+    {
         $services = Service::all();
         $clients = Client::all();
 
@@ -48,43 +53,51 @@ class HomeController extends Controller
             'rate' => $rate
         ]);
     }
-    function branch(){
+    function branch()
+    {
         $services = Service::all();
         $branches = Branch::all();
         $setting = Setting::first();
-        return view('branches',compact('services','branches','setting'));
+        return view('branches', compact('services', 'branches', 'setting'));
     }
-    function contactus(){
+    function contactus()
+    {
         $services = Service::all();
-        return view('contactus',compact('services'));
+        return view('contactus', compact('services'));
     }
-    function project(){
+    function project()
+    {
         $services = Service::all();
         $projects = Project::all();
         $setting = Setting::first();
-        return view('projects',compact('services','projects','setting'));
+        return view('projects', compact('services', 'projects', 'setting'));
     }
-    function project_show($id){
+    function project_show($id)
+    {
         $services = Service::all();
         $project = Project::find($id);
-        return view('project-details',compact('services','project'));
+        return view('project-details', compact('services', 'project'));
     }
-    function news(){
+    function news()
+    {
         $services = Service::all();
         $news = News::get();
         $setting = Setting::first();
-        return view('news',compact('services','news','setting'));
+        return view('news', compact('services', 'news', 'setting'));
     }
-    function news_show($id){
+    function news_show($id)
+    {
         $services = Service::all();
         $news = News::find($id);
-        return view('news-details',compact('services','news'));
+        return view('news-details', compact('services', 'news'));
     }
-    function gallery(){
+    function gallery()
+    {
         $services = Service::all();
-        return view('gallery',compact('services'));
+        return view('gallery', compact('services'));
     }
-    function service_show($id){
+    function service_show($id)
+    {
         $services = Service::all();
         $service_data = Service::find($id);
         $setting = Setting::first();
