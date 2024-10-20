@@ -36,7 +36,7 @@ Route::get('download/', function()
     $filename = CompanyProfile::first()->profile_name;
     // Check if file exists in app/storage/file folder
     $file_path = public_path('storage/profile/' . $filename);
-    // dd($file_path);
+
     if (file_exists($file_path))
     {
         return response()->download($file_path);

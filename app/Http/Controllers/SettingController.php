@@ -230,7 +230,7 @@ class SettingController extends Controller
         try {
             $company = CompanyProfile::first();
             Storage::disk('my_disk')->delete($company->profile_name);
-            $name = uniqid() . '.' . $request->file('profile_name')->getClientOriginalExtension();
+            $name = $request->file('profile_name')->getClientOriginalName() . '.' . $request->file('profile_name')->getClientOriginalExtension();
             $request->file('profile_name')->move(public_path('storage/profile'), $name);
 
             $company->profile_name = $name;
@@ -240,7 +240,6 @@ class SettingController extends Controller
             return redirect()->back();
         } catch (Exception $e) {
             toastr()->error('حدث خطا ما');
-            return $e->getMessage();
             return redirect()->back();
         }
     }
