@@ -89,8 +89,9 @@ class HomeController extends Controller
     function news_show($id)
     {
         $services = Service::all();
+        $setting = Setting::first();
         $news = News::find($id);
-        return view('news-details', compact('services', 'news'));
+        return view('news-details', compact('setting', 'services', 'news'));
     }
     function gallery()
     {
