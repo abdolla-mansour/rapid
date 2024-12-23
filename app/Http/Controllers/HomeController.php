@@ -73,7 +73,7 @@ class HomeController extends Controller
         return view('projects', compact('services', 'projects', 'setting'));
     }
     function project_show($id)
-    {
+    { 
         $services = Service::all();
         $setting = Setting::first();
         $project = Project::find($id);
