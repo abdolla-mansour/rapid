@@ -63,7 +63,7 @@ class HomeController extends Controller
     function contactus()
     {
         $services = Service::all();
-        $setting = Setting::all();
+        $setting = Setting::first();
         return view('contactus', compact('services', 'setting'));
     }
     function project()
